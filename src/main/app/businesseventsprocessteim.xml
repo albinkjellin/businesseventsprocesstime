@@ -9,6 +9,15 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
     <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <spring:beans>
+		<spring:bean class="com.mulesoft.test.poc.MPEventListener"
+			id="mpListener"/>
+	</spring:beans>
+	<notifications>
+		<notification-listener ref="mpListener"/>
+	</notifications>
+    
+    
     <flow name="businesseventsprocessteimFlow">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/trigger" doc:name="HTTP"/>
         <logger level="INFO" message="*** Before Sleep ***" doc:name="Logger"/>
