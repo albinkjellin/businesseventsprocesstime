@@ -26,5 +26,6 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
         </scripting:transformer>
         <logger level="INFO" message="*** After Sleep ***" doc:name="Logger"/>
         <set-payload value="success" doc:name="Set Payload"/>
+        <tracking:custom-event event-name="Some Event" doc:name="Some Event"/>
     </flow>
 </mule>
